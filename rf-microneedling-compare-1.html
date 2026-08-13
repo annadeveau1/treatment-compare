@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apples to Apples — RF Microneedling Compared</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF7;
+    --ink:#1B2B44;
+    --ink-soft:#5B6470;
+    --line:#DDD8CC;
+    --verified:#2F6F5E;
+    --verified-bg:#EAF2EF;
+    --reported:#B8722E;
+    --reported-bg:#F8EDE1;
+    --spec:#39536E;
+    --spec-bg:#EBF0F5;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:56px 24px 96px;}
+
+  header{margin-bottom:40px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:44px;
+    line-height:1.08;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  h1 em{font-style:italic;font-weight:400;color:var(--spec);}
+  .sub{
+    font-size:16px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    max-width:60ch;
+  }
+
+  .category-intro{
+    background:var(--card);
+    border-left:3px solid var(--ink);
+    padding:16px 18px;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    margin-bottom:20px;
+  }
+  .back-link{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    display:inline-block;
+    margin-bottom:28px;
+  }
+
+  .picker{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:40px 0 8px;
+    flex-wrap:wrap;
+  }
+  select{
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    font-weight:500;
+    color:var(--ink);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:12px 16px;
+    min-width:200px;
+    appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235B6470' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 16px center;
+    padding-right:36px;
+    cursor:pointer;
+  }
+  .vs{
+    font-family:'Newsreader',serif;
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:18px;
+  }
+
+  .legend{
+    display:flex;
+    gap:18px;
+    margin:28px 0 4px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+  }
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .dot.verified{background:var(--verified);}
+  .dot.spec{background:var(--spec);}
+  .dot.reported{background:var(--reported);}
+
+  .table-scroll{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    margin-top:24px;
+  }
+  table{
+    width:100%;
+    min-width:640px;
+    border-collapse:collapse;
+    background:var(--card);
+    border:1px solid var(--line);
+  }
+  th, td{
+    text-align:left;
+    padding:16px 18px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+    font-size:14.5px;
+    line-height:1.5;
+  }
+  th{
+    font-family:'Newsreader',serif;
+    font-size:20px;
+    font-weight:500;
+    border-bottom:2px solid var(--ink);
+    width:44%;
+  }
+  th:first-child{width:15%;}
+  tr:last-child td{border-bottom:none;}
+  .row-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    width:15%;
+  }
+  .badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:2px 7px;
+    border-radius:2px;
+    margin-bottom:6px;
+  }
+  .badge.verified{background:var(--verified-bg);color:var(--verified);}
+  .badge.spec{background:var(--spec-bg);color:var(--spec);}
+  .badge.reported{background:var(--reported-bg);color:var(--reported);}
+
+  .fda-line{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+  }
+  .fda-line .status{font-weight:500;}
+  .fda-line.ok .status{color:var(--verified);}
+  .fda-line.pending .status{color:var(--ink-soft);}
+  .fda-loading{color:var(--ink-soft);font-style:italic;}
+  .fda-query{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    margin-top:4px;
+    font-style:italic;
+  }
+  .fda-check-btn{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--spec);
+    text-decoration:none;
+    border:1px solid var(--spec);
+    border-radius:2px;
+    padding:3px 10px;
+    margin-left:6px;
+  }
+
+  footer{
+    margin-top:56px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  footer a{color:var(--spec);}
+
+  @media (max-width:640px){
+    h1{font-size:32px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Aesthetic Devices, Compared Plainly</div>
+    <h1>Same category.<br>Very <em>different</em> machines.</h1>
+    <p class="sub">Clinics market these under brand names, not mechanisms. This pulls the regulatory record directly from the FDA and lays the rest out from manufacturer specs and cross-checked field reports, so you can compare devices instead of marketing copy.</p>
+  </header>
+
+  <div class="category-intro">
+    RF microneedling combines fine needles with radiofrequency energy delivered beneath the skin's surface, aiming to trigger collagen production while limiting surface damage. Fourteen branded devices are compared here, same underlying mechanism, real differences in depth, energy delivery, and what each is actually cleared for.
+  </div>
+
+  <a href="index.html" class="back-link">← All treatment categories</a>
+
+  <div class="picker">
+    <select id="deviceA"></select>
+    <span class="vs">vs.</span>
+    <select id="deviceB"></select>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot verified"></span>FDA verified — live</span>
+    <span><span class="dot spec"></span>Manufacturer spec</span>
+    <span><span class="dot reported"></span>Field-reported — cross-checked, not live</span>
+  </div>
+
+  <div class="table-scroll">
+    <table id="compareTable"></table>
+  </div>
+
+  <footer>
+    FDA clearance status is fetched live from the openFDA 510(k) API at page load. Manufacturer specs are sourced from published device IFUs, last checked August 2026. Field-reported figures (downtime, sessions, cost) are synthesized from multiple independent clinic sources and reflect a consensus range, not a single provider's claim — treat them as a starting estimate, not a quote. This page is educational and does not replace a consultation with a licensed provider.
+  </footer>
+
+</div>
+
+<script>
+const DEVICES = {
+  "morpheus8": {
+    name: "Morpheus8",
+    fdaQuery: "InMode",
+    rfType: { value: "Continuous wave only", tier: "spec" },
+    depth: { value: "0.5mm–4.0mm, adjustable in 0.5mm increments; only device with approved body tips", tier: "spec" },
+    bestFor: { value: "Skin tightening and fat remodeling via deeper penetration. Most widely marketed device in this category.", tier: "reported" },
+    downtime: { value: "3–5 days typical (redness, swelling)", tier: "reported" },
+    sessions: { value: "3 sessions typical", tier: "reported" },
+    cost: { value: "Premium pricing vs. category — carries a brand markup", tier: "reported" },
+    safety: { value: "Not recommended for active pigment or vascular conditions; higher post-inflammatory hyperpigmentation risk in Fitzpatrick IV–VI", tier: "reported" }
+  },
+  "sylfirmx": {
+    name: "Sylfirm X",
+    fdaQuery: "Viol",
+    rfType: { value: "Both continuous and pulsed wave — the only device in this set with pulsed wave", tier: "spec" },
+    depth: { value: "0.3mm–4.0mm", tier: "spec" },
+    bestFor: { value: "Conditions contraindicated for other RF devices, particularly melasma and vascular concerns", tier: "reported" },
+    downtime: { value: "Typically 1–3 days of mild redness, shorter recovery than deeper-penetration devices", tier: "reported" },
+    sessions: { value: "Often 4 sessions", tier: "reported" },
+    cost: { value: "Lower per-session price, though total plan cost can run similar to other devices due to the extra session typically needed", tier: "reported" },
+    safety: { value: "Considered safer for pigment and vascular conditions due to pulsed-wave option", tier: "reported" }
+  },
+  "secretrf": {
+    name: "Secret RF",
+    fdaQuery: "Cutera",
+    rfType: { value: "Continuous wave only", tier: "spec" },
+    depth: { value: "0.5mm–3.5mm, adjustable in fine 0.1mm increments", tier: "spec" },
+    bestFor: { value: "Precision work, sensitive skin — finer depth control than 0.5mm-step devices", tier: "reported" },
+    downtime: { value: "3–5 days of redness and mild swelling, generally well tolerated", tier: "reported" },
+    sessions: { value: "3 sessions typical", tier: "reported" },
+    cost: { value: "Mid-range pricing for the category — no branded premium markup", tier: "reported" },
+    safety: { value: "Post-October 2025 FDA safety communication, some practices shifted facial use toward body areas", tier: "reported" }
+  },
+  "vivace": {
+    name: "Vivace",
+    fdaQuery: "ShenB",
+    rfType: { value: "Continuous wave only", tier: "spec" },
+    depth: { value: "0.5mm–3.5mm, both insulated and non-insulated needle options", tier: "spec" },
+    bestFor: { value: "Most customizable of the group; gold-plated needles marketed as lower irritation risk", tier: "reported" },
+    downtime: { value: "Marketed as minimal downtime, 'lunchtime' positioning", tier: "reported" },
+    sessions: { value: "Varies by concern", tier: "reported" },
+    cost: { value: "Mid-range pricing for the category, positioned similarly to other non-premium-branded devices", tier: "reported" },
+    safety: { value: "No category-specific flag beyond general RF microneedling contraindications", tier: "reported" }
+  },
+  "potenza": {
+    name: "Potenza",
+    fdaQuery: "Cynosure",
+    rfType: { value: "Four modes: monopolar or bipolar, at 1MHz or 2MHz — most configurable RF delivery in this category", tier: "spec" },
+    depth: { value: "Variable by tip — semi-insulated 'Tiger Tip' and fully insulated tip options for shallow or deep treatment", tier: "spec" },
+    bestFor: { value: "Scar revision, especially acne scars; can be used on all Fitzpatrick skin types, any body area, any season", tier: "reported" },
+    downtime: { value: "Temporary redness, tingling, and mild burning sensation during treatment", tier: "reported" },
+    sessions: { value: "Not consistently reported — varies by concern treated", tier: "reported" },
+    cost: { value: "Mid-range pricing, generally positioned below premium-tier devices in the category", tier: "reported" },
+    safety: { value: "First device of its kind cleared for use across all Fitzpatrick skin types with no seasonal restriction", tier: "reported" }
+  },
+  "genius": {
+    name: "Genius",
+    fdaQuery: "Lutronic",
+    rfType: { value: "Insulated needles with real-time impedance monitoring — the only RF microneedling platform that adjusts energy over 500 times per second during treatment", tier: "spec" },
+    depth: { value: "Predetermined depth control; energy released only at the needle tip, not along the shaft", tier: "spec" },
+    bestFor: { value: "Skin tightening, texture, pore refinement, acne scarring; won a 2026 head-to-head collagen induction study among blinded evaluators", tier: "reported" },
+    downtime: { value: "Not consistently reported across sources", tier: "reported" },
+    sessions: { value: "3 sessions typical for scar improvement", tier: "reported" },
+    cost: { value: "Positioned as a premium option based on clinical evidence backing", tier: "reported" },
+    safety: { value: "Insulated needle design protects the epidermis, marketed as safe across all Fitzpatrick skin types", tier: "reported" }
+  },
+  "scarletpro": {
+    name: "Scarlet Pro",
+    fdaQuery: "Viol",
+    rfType: { value: "Bipolar, non-insulated microneedles, continuous wave — creates tear-shaped coagulation zones via the proprietary 'Na Effect'", tier: "spec" },
+    depth: { value: "Motorized needle drive with vision-inspection technology to monitor needle pattern and skin in real time", tier: "spec" },
+    bestFor: { value: "Face, body, and scalp treatments; made by Viol, the same manufacturer behind Sylfirm X", tier: "reported" },
+    downtime: { value: "Not consistently reported across sources", tier: "reported" },
+    sessions: { value: "Not consistently reported — varies by concern treated", tier: "reported" },
+    cost: { value: "Not consistently reported — newer to the US market (launched late 2025)", tier: "reported" },
+    safety: { value: "FDA-cleared; no category-specific safety flag found in available sources", tier: "reported" }
+  },
+  "intracel": {
+    name: "INTRAcel",
+    fdaQuery: "Jeisys",
+    rfType: { value: "Insulated microneedles (49 pins), monopolar and bipolar modes plus a superficial RF mode — three treatment platforms in one system", tier: "spec" },
+    depth: { value: "Needles insulated except for the final 0.3mm at the tip, energy released only at that point to protect the skin surface", tier: "spec" },
+    bestFor: { value: "Acne scars and wrinkles; energy delivery in 0.04–0.1 seconds per pulse", tier: "reported" },
+    downtime: { value: "Minimal — insulated design is marketed as reducing recovery time versus non-insulated devices", tier: "reported" },
+    sessions: { value: "Improvement reported after up to 4 sessions in published studies", tier: "reported" },
+    cost: { value: "Not consistently reported for the US market", tier: "reported" },
+    safety: { value: "Marketed as suitable for all skin types due to insulated needle design", tier: "reported" }
+  },
+  "profound": {
+    name: "Profound",
+    fdaQuery: "Candela",
+    rfType: { value: "Bipolar, long-pulse RF with real-time temperature monitoring — insulated microneedles hold a target temperature rather than just delivering fixed energy", tier: "spec" },
+    depth: { value: "Delivers energy at up to three depths in a single system; temperature-controlled rather than depth-controlled like most competitors", tier: "spec" },
+    bestFor: { value: "Facial wrinkles and, separately, body cellulite — one of the only devices in this category cleared for both face and body cellulite improvement", tier: "reported" },
+    downtime: { value: "Marketed around a single-treatment protocol rather than multiple sessions, unlike most devices in this category", tier: "reported" },
+    sessions: { value: "Marketed as typically one treatment for lasting results, unlike the 3+ session norm elsewhere in this category", tier: "reported" },
+    cost: { value: "Positioned at the premium end — single-treatment protocol reflected in per-session pricing", tier: "reported" },
+    safety: { value: "Real-time temperature control is marketed as a safety differentiator versus fixed-energy devices", tier: "reported" }
+  },
+  "exion": {
+    name: "EXION",
+    fdaQuery: "BTL",
+    rfType: { value: "Fractional RF microneedling combined with targeted ultrasound and AI-driven energy adjustment based on real-time skin impedance", tier: "spec" },
+    depth: { value: "Reaches up to 8mm depth without full needle insertion, using AI to modulate energy delivery in a single pass", tier: "spec" },
+    bestFor: { value: "Skin tightening, lifting, and scar revision; positioned as a direct Morpheus8 competitor in the $30,000–45,000 practice price range", tier: "reported" },
+    downtime: { value: "Not consistently reported across sources", tier: "reported" },
+    sessions: { value: "Not consistently reported across sources", tier: "reported" },
+    cost: { value: "Generally positioned below Morpheus8 in practice acquisition cost", tier: "reported" },
+    safety: { value: "FDA-cleared in 2023; no independent adverse-event signal found comparable to the Morpheus8 pattern noted elsewhere", tier: "reported" }
+  },
+  "agnesrf": {
+    name: "AGNES RF",
+    fdaQuery: "AGNES",
+    rfType: { value: "Partially insulated Micro Blade Pin needles delivering a square-wave energy pattern, distinct from the round pulse used by most other devices", tier: "spec" },
+    depth: { value: "Needle depth specifically designed for targeted small-area work (jowls, under-eye, neck) rather than broad facial coverage", tier: "spec" },
+    bestFor: { value: "Facial contouring and fat reduction in small, specific areas — positioned differently from broad-coverage devices in this category", tier: "reported" },
+    downtime: { value: "Marketed as less downtime than traditional microneedling due to the insulated coating design", tier: "reported" },
+    sessions: { value: "Not consistently reported across sources", tier: "reported" },
+    cost: { value: "Not consistently reported across sources", tier: "reported" },
+    safety: { value: "Insulated coating marketed to protect surrounding skin layers during targeted treatment", tier: "reported" }
+  },
+  "pixel8rf": {
+    name: "Pixel8-RF",
+    fdaQuery: "Rohrer",
+    rfType: { value: "Bipolar RF operating at 2MHz — double the frequency most other devices in this category use, delivering energy faster", tier: "spec" },
+    depth: { value: "Motorized foot-press insertion for controlled, even depth versus manual stamping used on some other devices", tier: "spec" },
+    bestFor: { value: "Texture, wrinkles, and skin laxity; value-tier pricing relative to flagship platforms in this category", tier: "reported" },
+    downtime: { value: "Marketed as more comfortable than 1MHz devices due to faster energy delivery, often paired with active cooling during treatment", tier: "reported" },
+    sessions: { value: "Not consistently reported across sources", tier: "reported" },
+    cost: { value: "Value tier — typically quoted well below the flagship devices in this category", tier: "reported" },
+    safety: { value: "No category-specific safety flag found in available sources", tier: "reported" }
+  },
+  "virtuerf": {
+    name: "VirtueRF",
+    fdaQuery: "ilooda",
+    rfType: { value: "Not consistently detailed in available sources — manufactured by ilooda (South Korea), the same company behind other Korean-built platforms in this category", tier: "reported" },
+    depth: { value: "Not consistently reported — verify directly with manufacturer or provider", tier: "reported" },
+    bestFor: { value: "Sold in the US under distribution agreement with Cartessa Aesthetics, similar structure to Secret RF and Scarlet Pro", tier: "reported" },
+    downtime: { value: "Not consistently reported across sources", tier: "reported" },
+    sessions: { value: "Not consistently reported across sources", tier: "reported" },
+    cost: { value: "Not consistently reported across sources", tier: "reported" },
+    safety: { value: "Not consistently reported across sources", tier: "reported" }
+  },
+  "fractora": {
+    name: "Fractora",
+    fdaQuery: "InMode",
+    rfType: { value: "Bipolar RF microneedling, InMode's other RF microneedling product alongside Morpheus8, with a different needle configuration and positioning", tier: "spec" },
+    depth: { value: "Not consistently detailed in available sources — shallower positioning than Morpheus8 generally reported", tier: "reported" },
+    bestFor: { value: "Texture and superficial skin resurfacing, positioned as a lighter-touch alternative to Morpheus8 within InMode's own product line", tier: "reported" },
+    downtime: { value: "Not consistently reported across sources", tier: "reported" },
+    sessions: { value: "Not consistently reported across sources", tier: "reported" },
+    cost: { value: "Not consistently reported across sources", tier: "reported" },
+    safety: { value: "Not consistently reported across sources", tier: "reported" }
+  }
+};
+
+const ROWS = [
+  { key: "rfType", label: "RF delivery" },
+  { key: "depth", label: "Needle depth" },
+  { key: "bestFor", label: "Typically used for" },
+  { key: "downtime", label: "Downtime" },
+  { key: "sessions", label: "Sessions" },
+  { key: "cost", label: "Relative cost" },
+  { key: "safety", label: "Safety notes" }
+];
+
+function badge(tier){
+  const map = { verified: "FDA verified", spec: "Manufacturer spec", reported: "Field-reported" };
+  return `<span class="badge ${tier}">${map[tier]}</span>`;
+}
+
+function populateSelects(){
+  const a = document.getElementById('deviceA');
+  const b = document.getElementById('deviceB');
+  Object.keys(DEVICES).forEach((key, i) => {
+    const optA = new Option(DEVICES[key].name, key, i===0, i===0);
+    const optB = new Option(DEVICES[key].name, key, i===1, i===1);
+    a.add(optA);
+    b.add(optB);
+  });
+}
+
+function renderTable(){
+  const keyA = document.getElementById('deviceA').value;
+  const keyB = document.getElementById('deviceB').value;
+  const A = DEVICES[keyA], B = DEVICES[keyB];
+  const table = document.getElementById('compareTable');
+
+  let html = `<tr><th></th><th>${A.name}</th><th>${B.name}</th></tr>`;
+
+  html += `<tr>
+    <td class="row-label">FDA status</td>
+    <td>${badge('verified')}<div class="fda-line pending" id="fda-${keyA}"><span class="fda-loading">checking openFDA…</span></div></td>
+    <td>${badge('verified')}<div class="fda-line pending" id="fda-${keyB}"><span class="fda-loading">checking openFDA…</span></div></td>
+  </tr>`;
+
+  html += `<tr>
+    <td class="row-label">EU (CE) status</td>
+    <td><a class="fda-check-btn" href="https://ec.europa.eu/tools/eudamed/#/screen/search-device" target="_blank" rel="noopener">Check EUDAMED →</a></td>
+    <td><a class="fda-check-btn" href="https://ec.europa.eu/tools/eudamed/#/screen/search-device" target="_blank" rel="noopener">Check EUDAMED →</a></td>
+  </tr>`;
+
+  html += `<tr>
+    <td class="row-label">Korea (MFDS) status</td>
+    <td><a class="fda-check-btn" href="https://emedi.mfds.go.kr/" target="_blank" rel="noopener">Check MFDS →</a></td>
+    <td><a class="fda-check-btn" href="https://emedi.mfds.go.kr/" target="_blank" rel="noopener">Check MFDS →</a></td>
+  </tr>`;
+
+  ROWS.forEach(row => {
+    html += `<tr>
+      <td class="row-label">${row.label}</td>
+      <td>${badge(A[row.key].tier)}<div>${A[row.key].value}</div></td>
+      <td>${badge(B[row.key].tier)}<div>${B[row.key].value}</div></td>
+    </tr>`;
+  });
+
+  table.innerHTML = html;
+  fetchFDA(keyA);
+  fetchFDA(keyB);
+}
+
+async function tryFetch(searchField, searchValue, exact){
+  const q = exact ? `"${encodeURIComponent(searchValue)}"` : encodeURIComponent(searchValue);
+  const url = `https://api.fda.gov/device/510k.json?search=${searchField}:${q}&limit=1&sort=decision_date:desc`;
+  try{
+    const res = await fetch(url);
+    if(!res.ok) return null;
+    const data = await res.json();
+    return (data.results && data.results[0]) || null;
+  } catch(e){
+    return null;
+  }
+}
+
+async function fetchFDA(key){
+  const device = DEVICES[key];
+  const el = document.getElementById(`fda-${key}`);
+  if(!el) return;
+
+  // Try progressively looser searches until one finds a real record.
+  const attempts = [
+    { field: 'applicant', value: device.fdaQuery, exact: true,  label: `manufacturer: "${device.fdaQuery}"` },
+    { field: 'applicant', value: device.fdaQuery, exact: false, label: `manufacturer (broad): "${device.fdaQuery}"` },
+    { field: 'device_name', value: device.name, exact: true,  label: `device name: "${device.name}"` },
+    { field: 'device_name', value: device.name, exact: false, label: `device name (broad): "${device.name}"` }
+  ];
+
+  for(const attempt of attempts){
+    const rec = await tryFetch(attempt.field, attempt.value, attempt.exact);
+    if(rec){
+      el.className = "fda-line ok";
+      el.innerHTML = `<span class="status">Cleared</span> — ${rec.decision_date || 'date n/a'} · ${rec.k_number || ''}`;
+      return;
+    }
+  }
+
+  el.className = "fda-line pending";
+  el.innerHTML = `<a class="fda-check-btn" href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/pmn.cfm" target="_blank" rel="noopener">Check live →</a>`;
+}
+
+populateSelects();
+document.getElementById('deviceB').selectedIndex = 1;
+renderTable();
+document.getElementById('deviceA').addEventListener('change', renderTable);
+document.getElementById('deviceB').addEventListener('change', renderTable);
+</script>
+</body>
+</html>

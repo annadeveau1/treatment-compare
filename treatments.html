@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Treatments — Apples to Apples</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF7; --ink:#1B2B44; --ink-soft:#5B6470; --line:#DDD8CC;
+    --verified:#2F6F5E; --verified-bg:#EAF2EF; --card:#FFFFFF; --spec:#39536E;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:56px 24px 96px;}
+
+  a.back{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);text-decoration:none;display:inline-block;margin-bottom:24px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px;}
+  h1{font-family:'Newsreader',serif;font-weight:500;font-size:38px;line-height:1.12;margin:0 0 16px;letter-spacing:-0.01em;}
+  h1 em{font-style:italic;font-weight:400;color:var(--spec);}
+  .sub{font-size:15.5px;line-height:1.55;color:var(--ink-soft);max-width:60ch;margin-bottom:40px;}
+
+  .category-grid{display:flex;flex-direction:column;gap:14px;}
+  .category-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:22px 24px;
+    text-decoration:none;
+    color:var(--ink);
+    display:block;
+    transition:border-color 0.15s;
+  }
+  .category-card:not(.disabled):hover{border-color:var(--ink);}
+  .category-card.disabled{
+    opacity:0.55;
+    cursor:default;
+    pointer-events:none;
+  }
+  .card-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+  .card-name{font-family:'Newsreader',serif;font-size:22px;font-weight:500;}
+  .card-status{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:3px 9px;
+    border-radius:2px;
+  }
+  .card-status.live{background:var(--verified-bg);color:var(--verified);}
+  .card-status.soon{background:var(--line);color:var(--ink-soft);}
+  .card-desc{font-size:14px;color:var(--ink-soft);line-height:1.5;}
+  .card-count{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-top:10px;
+  }
+
+  footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-soft);line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="index.html" class="back">← Home</a>
+
+  <div class="eyebrow">Browse by Category</div>
+  <h1>Pick a treatment <em>category</em> to compare.</h1>
+  <p class="sub">Each category pulls from the same standard: FDA and international regulatory records where they exist, manufacturer specifications, and cross-checked field reports for everything else. New categories are added as they're researched.</p>
+
+  <div class="category-grid">
+
+    <a href="rf-microneedling-compare.html" class="category-card">
+      <div class="card-top">
+        <span class="card-name">RF Microneedling</span>
+        <span class="card-status live">Live</span>
+      </div>
+      <div class="card-desc">Fractional radiofrequency delivered through fine needles beneath the skin — Morpheus8, Sylfirm X, Secret RF, and eleven others compared.</div>
+      <div class="card-count">14 devices</div>
+    </a>
+
+    <div class="category-card disabled">
+      <div class="card-top">
+        <span class="card-name">Injectables</span>
+        <span class="card-status soon">Coming soon</span>
+      </div>
+      <div class="card-desc">Neurotoxins and dermal fillers — brand-level differences, not just category comparisons.</div>
+    </div>
+
+    <div class="category-card disabled">
+      <div class="card-top">
+        <span class="card-name">Body Contouring</span>
+        <span class="card-status soon">Coming soon</span>
+      </div>
+      <div class="card-desc">Manual lymphatic drainage, cavitation, and mechanical compression — compared side by side.</div>
+    </div>
+
+    <div class="category-card disabled">
+      <div class="card-top">
+        <span class="card-name">Laser Resurfacing</span>
+        <span class="card-status soon">Coming soon</span>
+      </div>
+      <div class="card-desc">Ablative and non-ablative laser platforms compared.</div>
+    </div>
+
+  </div>
+
+  <footer>
+    Content is sourced from FDA regulatory documents, EU and Korean regulatory databases where applicable, and manufacturer specifications, cross-checked against clinical sources otherwise. This is educational content and does not replace a consultation with a licensed provider.
+  </footer>
+
+</div>
+</body>
+</html>
