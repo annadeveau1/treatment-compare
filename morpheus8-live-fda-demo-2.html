@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morpheus8 — Live FDA Lookup</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF7; --ink:#1B2B44; --ink-soft:#5B6470; --line:#DDD8CC;
+    --verified:#2F6F5E; --verified-bg:#EAF2EF; --card:#FFFFFF;
+    --spec:#39536E; --spec-bg:#EBF0F5;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:640px;margin:0 auto;padding:48px 24px 80px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;}
+  h1{font-family:'Newsreader',serif;font-weight:500;font-size:32px;line-height:1.15;margin:0 0 14px;letter-spacing:-0.01em;}
+  .sub{font-size:15px;line-height:1.55;color:var(--ink-soft);margin-bottom:28px;}
+
+  button{
+    font-family:'Inter',sans-serif;font-size:15px;font-weight:600;
+    background:var(--ink);color:var(--paper);
+    border:none;border-radius:2px;padding:14px 24px;
+    cursor:pointer;
+  }
+  button:disabled{opacity:0.6;cursor:default;}
+
+  .identity{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:16px 18px;
+    margin-bottom:28px;
+  }
+  .identity-row{
+    display:flex;
+    gap:14px;
+    font-size:13.5px;
+    line-height:1.5;
+    padding:8px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .identity-row:last-child{border-bottom:none;}
+  .identity-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    width:110px;
+    flex-shrink:0;
+    padding-top:1px;
+  }
+
+  .explainer{
+    background:var(--verified-bg);
+    border-left:3px solid var(--verified);
+    padding:20px 20px 16px;
+    margin-bottom:28px;
+  }
+  .explainer-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--verified);
+    display:block;
+    margin-bottom:12px;
+  }
+  .explainer ul{margin:0; padding-left:18px;}
+  .explainer li{font-size:14.5px; line-height:1.55; margin-bottom:10px;}
+  .explainer-source{font-size:12px; color:var(--ink-soft); margin-top:6px; font-style:italic;}
+
+  .explainer.settings{
+    background:var(--spec-bg, #EBF0F5);
+    border-left-color:var(--spec, #39536E);
+  }
+  .settings-label{color:var(--spec, #39536E) !important;}
+  .settings-table{width:100%; border-collapse:collapse; margin-bottom:10px; font-size:13.5px;}
+  .settings-table th, .settings-table td{
+    text-align:left; padding:8px 10px; border-bottom:1px solid rgba(0,0,0,0.08);
+    vertical-align:top;
+  }
+  .settings-table th{font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.03em; color:var(--spec, #39536E);}
+
+  .results{margin-top:32px;}
+  .item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-left:3px solid var(--verified);
+    padding:16px 18px;
+    margin-bottom:14px;
+    font-size:14.5px;
+    line-height:1.55;
+  }
+  .item .k-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--verified);
+    margin-bottom:6px;
+    display:block;
+  }
+  .item a{color:var(--ink); text-decoration:underline; font-size:13px;}
+  .status{font-size:14px;color:var(--ink-soft);font-style:italic;margin-top:20px;}
+
+  footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-soft);line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Live Lookup</div>
+  <h1>Morpheus8 — pulled fresh from the FDA</h1>
+  <p class="sub">Press the button to fetch the most recent FDA 510(k) clearance records for Morpheus8/InMode, live, straight from the FDA's own database. Each result links to the source document.</p>
+
+  <div class="identity">
+    <div class="identity-row"><span class="identity-label">Product name</span><span>Morpheus8 — a set of RF microneedling applicators</span></div>
+    <div class="identity-row"><span class="identity-label">Manufacturer</span><span>InMode Ltd.</span></div>
+    <div class="identity-row"><span class="identity-label">How they relate</span><span>Morpheus8 applicators plug into InMode's underlying RF platform. FDA filings list the full device as "InMode System with the Morpheus8 Applicators" — InMode is the company and base platform, Morpheus8 is the specific applicator set.</span></div>
+  </div>
+
+  <div class="explainer">
+    <span class="explainer-label">What this actually means</span>
+    <ul>
+      <li><strong>What it is:</strong> A device that delivers radiofrequency (RF) energy through tiny needles that penetrate the skin at adjustable depths.</li>
+      <li><strong>What it's FDA-cleared for:</strong> Heating and tightening (coagulating/contracting) soft tissue, and controlling minor bleeding during procedures. It's the first RF microneedling device cleared specifically for tightening soft tissue, and separately cleared for full-body fat remodeling.</li>
+      <li><strong>How it works, plainly:</strong> The needles deliver heat below the skin's surface. That heat damages fat cells and tightens the deeper skin layer, and the controlled injury is thought to trigger the body's healing response, prompting new collagen production.</li>
+      <li><strong>A real limitation worth asking about:</strong> At the highest energy settings (above 62 millijoules per pin), the device is only cleared for lighter to medium skin tones (Fitzpatrick Skin Types I–IV). If you have darker skin, ask your provider whether they're using a setting within that cleared range.</li>
+      <li><strong>Good to know:</strong> "Morpheus8" has gone through several separate FDA clearances over the years for different configurations, so the exact hardware and cleared uses can vary by which system a clinic owns.</li>
+    </ul>
+    <div class="explainer-source">Sourced from the FDA 510(k) clearance documents shown below (K192695, K231790, K240017) and related clinical trial records. Not medical advice — confirm specifics with your provider.</div>
+  </div>
+
+  <div class="explainer settings">
+    <span class="explainer-label settings-label">Manufacturer settings, by applicator</span>
+    <table class="settings-table">
+      <tr><th>Applicator</th><th>Needles</th><th>Depth range</th><th>Typically used for</th></tr>
+      <tr>
+        <td>Prime</td>
+        <td>12 pins</td>
+        <td>0.5mm–0.75mm (shallow)</td>
+        <td>Sensitive zones needing precision — around the eyes, jawline</td>
+      </tr>
+      <tr>
+        <td>Resurfacing</td>
+        <td>24 pins</td>
+        <td>Adjustable, upper dermis</td>
+        <td>Fine lines, texture, surface concerns</td>
+      </tr>
+      <tr>
+        <td>Standard Face/Neck (24-pin)</td>
+        <td>24 pins</td>
+        <td>Up to 4mm</td>
+        <td>General facial tightening and remodeling</td>
+      </tr>
+      <tr>
+        <td>Body (40-pin)</td>
+        <td>40 pins</td>
+        <td>2mm–7mm, in 1mm steps</td>
+        <td>Larger areas — abdomen, thighs; deeper fat/tissue remodeling</td>
+      </tr>
+    </table>
+    <div class="explainer-source">Sourced from InMode's published clinical treatment parameters documentation. The specific applicator, depth, and energy level used in your treatment is chosen by your provider based on your anatomy and goals — ask which one they're using and why.</div>
+  </div>
+
+  <button id="fetchBtn" onclick="fetchData()">See the official FDA records behind this</button>
+
+  <div id="status" class="status"></div>
+  <div id="results" class="results"></div>
+
+  <footer>
+    Data pulled live from the openFDA 510(k) API (api.fda.gov), a public database maintained by the U.S. Food and Drug Administration. Source links go to the original clearance documents hosted on accessdata.fda.gov. This tool shows regulatory clearance records only — it does not include downtime, cost, or session information, which come from separate clinical sources.
+  </footer>
+</div>
+
+<script>
+async function fetchData(){
+  const btn = document.getElementById('fetchBtn');
+  const status = document.getElementById('status');
+  const results = document.getElementById('results');
+  btn.disabled = true;
+  btn.textContent = "Fetching…";
+  status.textContent = "";
+  results.innerHTML = "";
+
+  try{
+    const url = `https://api.fda.gov/device/510k.json?search=device_name:"morpheus8"&sort=decision_date:desc&limit=5`;
+    const res = await fetch(url);
+    if(!res.ok) throw new Error("request failed");
+    const data = await res.json();
+    const records = data.results || [];
+
+    if(records.length === 0){
+      status.textContent = "No records found for this search term.";
+      return;
+    }
+
+    records.forEach(rec => {
+      const kNumber = rec.k_number || "unknown";
+      const yearPrefix = kNumber.length >= 3 ? kNumber.substring(1,3) : "";
+      const pdfUrl = `https://www.accessdata.fda.gov/cdrh_docs/pdf${yearPrefix}/${kNumber}.pdf`;
+
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.innerHTML = `
+        <span class="k-label">${kNumber} — ${rec.decision_date || 'date unknown'}</span>
+        <strong>${rec.device_name || 'Device name not provided'}</strong><br>
+        Applicant: ${rec.applicant || 'not listed'}<br>
+        Decision: ${rec.decision_description || rec.statement_or_summary || 'Substantially equivalent (cleared)'}<br>
+        <a href="${pdfUrl}" target="_blank" rel="noopener">View source document →</a>
+      `;
+      results.appendChild(div);
+    });
+
+    status.textContent = `Showing ${records.length} most recent record(s), pulled just now.`;
+
+  } catch(e){
+    status.textContent = "Couldn't reach the FDA database. Error: " + e.message + " — if you're viewing this inside a chat preview, try opening the hosted link directly in your browser instead.";
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Get most recent FDA data";
+  }
+}
+</script>
+</body>
+</html>

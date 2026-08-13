@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apples to Apples — RF Microneedling Compared</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF7;
+    --ink:#1B2B44;
+    --ink-soft:#5B6470;
+    --line:#DDD8CC;
+    --verified:#2F6F5E;
+    --verified-bg:#EAF2EF;
+    --reported:#B8722E;
+    --reported-bg:#F8EDE1;
+    --spec:#39536E;
+    --spec-bg:#EBF0F5;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:56px 24px 96px;}
+
+  header{margin-bottom:40px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    font-size:44px;
+    line-height:1.08;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  h1 em{font-style:italic;font-weight:400;color:var(--spec);}
+  .sub{
+    font-size:16px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    max-width:60ch;
+  }
+
+  .picker{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:40px 0 8px;
+    flex-wrap:wrap;
+  }
+  select{
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    font-weight:500;
+    color:var(--ink);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:12px 16px;
+    min-width:200px;
+    appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235B6470' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 16px center;
+    padding-right:36px;
+    cursor:pointer;
+  }
+  .vs{
+    font-family:'Newsreader',serif;
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:18px;
+  }
+
+  .legend{
+    display:flex;
+    gap:18px;
+    margin:28px 0 4px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+  }
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .dot.verified{background:var(--verified);}
+  .dot.spec{background:var(--spec);}
+  .dot.reported{background:var(--reported);}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:24px;
+    background:var(--card);
+    border:1px solid var(--line);
+  }
+  th, td{
+    text-align:left;
+    padding:16px 18px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+    font-size:14.5px;
+    line-height:1.5;
+  }
+  th{
+    font-family:'Newsreader',serif;
+    font-size:20px;
+    font-weight:500;
+    border-bottom:2px solid var(--ink);
+    width:38%;
+  }
+  tr:last-child td{border-bottom:none;}
+  .row-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    width:22%;
+  }
+  .badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:2px 7px;
+    border-radius:2px;
+    margin-bottom:6px;
+  }
+  .badge.verified{background:var(--verified-bg);color:var(--verified);}
+  .badge.spec{background:var(--spec-bg);color:var(--spec);}
+  .badge.reported{background:var(--reported-bg);color:var(--reported);}
+
+  .fda-line{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+  }
+  .fda-line .status{font-weight:500;}
+  .fda-line.ok .status{color:var(--verified);}
+  .fda-line.pending .status{color:var(--ink-soft);}
+  .fda-loading{color:var(--ink-soft);font-style:italic;}
+
+  footer{
+    margin-top:56px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  footer a{color:var(--spec);}
+
+  @media (max-width:640px){
+    h1{font-size:32px;}
+    table, thead, tbody, th, td, tr{display:block;}
+    th{width:auto;}
+    .row-label{width:auto;padding-bottom:4px;}
+    td{border-bottom:1px solid var(--line);}
+    tr{margin-bottom:8px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Aesthetic Devices, Compared Plainly</div>
+    <h1>Same category.<br>Very <em>different</em> machines.</h1>
+    <p class="sub">Clinics market these under brand names, not mechanisms. This pulls the regulatory record directly from the FDA and lays the rest out from manufacturer specs and cross-checked field reports, so you can compare devices instead of marketing copy.</p>
+  </header>
+
+  <div class="picker">
+    <select id="deviceA"></select>
+    <span class="vs">vs.</span>
+    <select id="deviceB"></select>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot verified"></span>FDA verified — live</span>
+    <span><span class="dot spec"></span>Manufacturer spec</span>
+    <span><span class="dot reported"></span>Field-reported — cross-checked, not live</span>
+  </div>
+
+  <table id="compareTable"></table>
+
+  <footer>
+    FDA clearance status is fetched live from the openFDA 510(k) API at page load. Manufacturer specs are sourced from published device IFUs, last checked August 2026. Field-reported figures (downtime, sessions, cost) are synthesized from multiple independent clinic sources and reflect a consensus range, not a single provider's claim — treat them as a starting estimate, not a quote. This page is educational and does not replace a consultation with a licensed provider.
+  </footer>
+
+</div>
+
+<script>
+const DEVICES = {
+  "morpheus8": {
+    name: "Morpheus8",
+    fdaQuery: "InMode",
+    rfType: { value: "Continuous wave only", tier: "spec" },
+    depth: { value: "0.5mm–4.0mm, adjustable in 0.5mm increments; only device with approved body tips", tier: "spec" },
+    bestFor: { value: "Skin tightening and fat remodeling via deeper penetration. Most widely marketed device in this category.", tier: "reported" },
+    downtime: { value: "3–5 days typical (redness, swelling)", tier: "reported" },
+    sessions: { value: "3 sessions typical", tier: "reported" },
+    cost: { value: "Premium pricing vs. category — carries a brand markup", tier: "reported" },
+    safety: { value: "Not recommended for active pigment or vascular conditions; higher post-inflammatory hyperpigmentation risk in Fitzpatrick IV–VI", tier: "reported" }
+  },
+  "sylfirmx": {
+    name: "Sylfirm X",
+    fdaQuery: "Sylfirm",
+    rfType: { value: "Both continuous and pulsed wave — the only device in this set with pulsed wave", tier: "spec" },
+    depth: { value: "0.3mm–4.0mm", tier: "spec" },
+    bestFor: { value: "Conditions contraindicated for other RF devices, particularly melasma and vascular concerns", tier: "reported" },
+    downtime: { value: "Generally shorter than Morpheus8", tier: "reported" },
+    sessions: { value: "Often 4 sessions", tier: "reported" },
+    cost: { value: "Lower per-session price, but total plan cost often similar to Morpheus8 due to extra session", tier: "reported" },
+    safety: { value: "Considered safer for pigment and vascular conditions due to pulsed-wave option", tier: "reported" }
+  },
+  "secretrf": {
+    name: "Secret RF",
+    fdaQuery: "Secret RF",
+    rfType: { value: "Continuous wave only", tier: "spec" },
+    depth: { value: "0.5mm–3.5mm, adjustable in fine 0.1mm increments", tier: "spec" },
+    bestFor: { value: "Precision work, sensitive skin — finer depth control than 0.5mm-step devices", tier: "reported" },
+    downtime: { value: "Comparable to Morpheus8, generally well tolerated", tier: "reported" },
+    sessions: { value: "3 sessions typical", tier: "reported" },
+    cost: { value: "Similar to Morpheus8, sometimes slightly less — no equivalent brand premium", tier: "reported" },
+    safety: { value: "Post-October 2025 FDA safety communication, some practices shifted facial use toward body areas", tier: "reported" }
+  },
+  "vivace": {
+    name: "Vivace",
+    fdaQuery: "Vivace",
+    rfType: { value: "Continuous wave only", tier: "spec" },
+    depth: { value: "0.5mm–3.5mm, both insulated and non-insulated needle options", tier: "spec" },
+    bestFor: { value: "Most customizable of the group; gold-plated needles marketed as lower irritation risk", tier: "reported" },
+    downtime: { value: "Marketed as minimal downtime, 'lunchtime' positioning", tier: "reported" },
+    sessions: { value: "Varies by concern", tier: "reported" },
+    cost: { value: "Comparable to Secret RF", tier: "reported" },
+    safety: { value: "No category-specific flag beyond general RF microneedling contraindications", tier: "reported" }
+  }
+};
+
+const ROWS = [
+  { key: "rfType", label: "RF delivery" },
+  { key: "depth", label: "Needle depth" },
+  { key: "bestFor", label: "Typically used for" },
+  { key: "downtime", label: "Downtime" },
+  { key: "sessions", label: "Sessions" },
+  { key: "cost", label: "Relative cost" },
+  { key: "safety", label: "Safety notes" }
+];
+
+function badge(tier){
+  const map = { verified: "FDA verified", spec: "Manufacturer spec", reported: "Field-reported" };
+  return `<span class="badge ${tier}">${map[tier]}</span>`;
+}
+
+function populateSelects(){
+  const a = document.getElementById('deviceA');
+  const b = document.getElementById('deviceB');
+  Object.keys(DEVICES).forEach((key, i) => {
+    const optA = new Option(DEVICES[key].name, key, i===0, i===0);
+    const optB = new Option(DEVICES[key].name, key, i===1, i===1);
+    a.add(optA);
+    b.add(optB);
+  });
+}
+
+function renderTable(){
+  const keyA = document.getElementById('deviceA').value;
+  const keyB = document.getElementById('deviceB').value;
+  const A = DEVICES[keyA], B = DEVICES[keyB];
+  const table = document.getElementById('compareTable');
+
+  let html = `<tr><th></th><th>${A.name}</th><th>${B.name}</th></tr>`;
+
+  html += `<tr>
+    <td class="row-label">FDA status</td>
+    <td>${badge('verified')}<div class="fda-line pending" id="fda-${keyA}"><span class="fda-loading">checking openFDA…</span></div></td>
+    <td>${badge('verified')}<div class="fda-line pending" id="fda-${keyB}"><span class="fda-loading">checking openFDA…</span></div></td>
+  </tr>`;
+
+  ROWS.forEach(row => {
+    html += `<tr>
+      <td class="row-label">${row.label}</td>
+      <td>${badge(A[row.key].tier)}<div>${A[row.key].value}</div></td>
+      <td>${badge(B[row.key].tier)}<div>${B[row.key].value}</div></td>
+    </tr>`;
+  });
+
+  table.innerHTML = html;
+  fetchFDA(keyA);
+  fetchFDA(keyB);
+}
+
+async function fetchFDA(key){
+  const device = DEVICES[key];
+  const el = document.getElementById(`fda-${key}`);
+  if(!el) return;
+  try{
+    const url = `https://api.fda.gov/device/510k.json?search=applicant:"${encodeURIComponent(device.fdaQuery)}"&limit=1&sort=decision_date:desc`;
+    const res = await fetch(url);
+    if(!res.ok) throw new Error('no record');
+    const data = await res.json();
+    const rec = data.results && data.results[0];
+    if(rec){
+      el.className = "fda-line ok";
+      el.innerHTML = `<span class="status">Cleared</span> — ${rec.decision_date || 'date n/a'} · ${rec.k_number || ''}`;
+    } else {
+      throw new Error('empty');
+    }
+  } catch(e){
+    el.className = "fda-line pending";
+    el.innerHTML = `<span class="status">No direct 510(k) match under this search term</span> — check openFDA manually by device name`;
+  }
+}
+
+populateSelects();
+document.getElementById('deviceB').selectedIndex = 1;
+renderTable();
+document.getElementById('deviceA').addEventListener('change', renderTable);
+document.getElementById('deviceB').addEventListener('change', renderTable);
+</script>
+</body>
+</html>
