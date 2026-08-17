@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dermal Fillers — Compared</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF7; --ink:#1B2B44; --ink-soft:#5B6470; --line:#DDD8CC;
+    --verified:#2F6F5E; --verified-bg:#EAF2EF;
+    --reported:#B8722E; --reported-bg:#F8EDE1;
+    --spec:#39536E; --spec-bg:#EBF0F5;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:920px;margin:0 auto;padding:48px 24px 96px;}
+
+  a.back-link{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);text-decoration:none;display:inline-block;margin-bottom:28px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px;}
+  h1{font-family:'Newsreader',serif;font-weight:500;font-size:40px;line-height:1.08;margin:0 0 16px;letter-spacing:-0.01em;}
+  h1 em{font-style:italic;font-weight:400;color:var(--spec);}
+  .sub{font-size:16px;line-height:1.55;color:var(--ink-soft);max-width:60ch;}
+
+  .category-intro{
+    background:var(--card);
+    border-left:3px solid var(--ink);
+    padding:16px 18px;
+    font-size:14px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    margin:20px 0 32px;
+  }
+
+  .picker{display:flex;align-items:center;gap:16px;margin:0 0 8px;flex-wrap:wrap;}
+  select{
+    font-family:'Inter',sans-serif;font-size:16px;font-weight:500;color:var(--ink);
+    background:var(--card);border:1px solid var(--line);border-radius:2px;padding:12px 16px;
+    min-width:200px;appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235B6470' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 16px center;padding-right:36px;cursor:pointer;
+  }
+  .vs{font-family:'Newsreader',serif;font-style:italic;color:var(--ink-soft);font-size:18px;}
+
+  .legend{display:flex;gap:18px;margin:28px 0 4px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-soft);}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+  .dot.verified{background:var(--verified);}
+  .dot.spec{background:var(--spec);}
+  .dot.reported{background:var(--reported);}
+
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:24px;}
+  table{width:100%;min-width:640px;border-collapse:collapse;background:var(--card);border:1px solid var(--line);}
+  th, td{text-align:left;padding:16px 18px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14.5px;line-height:1.5;}
+  th{font-family:'Newsreader',serif;font-size:20px;font-weight:500;border-bottom:2px solid var(--ink);width:44%;}
+  th:first-child{width:15%;}
+  tr:last-child td{border-bottom:none;}
+  .row-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);width:15%;}
+  .badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-bottom:6px;}
+  .badge.verified{background:var(--verified-bg);color:var(--verified);}
+  .badge.spec{background:var(--spec-bg);color:var(--spec);}
+  .badge.reported{background:var(--reported-bg);color:var(--reported);}
+
+  .fda-line{display:flex;align-items:baseline;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;flex-wrap:wrap;}
+  .fda-line .status{font-weight:500;}
+  .fda-line.ok .status{color:var(--verified);}
+  .fda-check-btn{
+    display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--spec);
+    text-decoration:none;border:1px solid var(--spec);border-radius:2px;padding:3px 10px;margin-left:6px;
+  }
+  .fda-loading{color:var(--ink-soft);font-style:italic;}
+
+  footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-soft);line-height:1.6;}
+
+  @media (max-width:640px){ h1{font-size:32px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a href="treatments.html" class="back-link">← All treatment categories</a>
+
+  <div class="eyebrow">Aesthetic Injectables, Compared Plainly</div>
+  <h1>Same category.<br>Different <em>chemistry.</em></h1>
+  <p class="sub">All hyaluronic acid fillers do the same basic job, but the manufacturing process behind each brand changes how it behaves once injected.</p>
+
+  <div class="category-intro">
+    All products here are hyaluronic acid (HA), a naturally occurring sugar molecule cross-linked to last longer in the skin. Every brand FDA-regulates as a Class III medical device and every one is reversible with the enzyme hyaluronidase if a correction is needed. What differs is the cross-linking method, gel firmness, and concentration, which changes where each product performs best.
+  </div>
+
+  <div class="picker">
+    <select id="fillerA"></select>
+    <span class="vs">vs.</span>
+    <select id="fillerB"></select>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot verified"></span>FDA verified — live</span>
+    <span><span class="dot spec"></span>Manufacturer spec</span>
+    <span><span class="dot reported"></span>Field-reported — cross-checked, not live</span>
+  </div>
+
+  <div class="table-scroll">
+    <table id="compareTable"></table>
+  </div>
+
+  <footer>
+    FDA clearance status is fetched live from the openFDA database at page load. Manufacturer technology descriptions are sourced from each brand's own published technical overviews. Field-reported figures (duration, best-use areas) reflect a consensus across multiple independent clinical sources, not a single provider's claim. This page is educational and does not replace an in-person consultation — an experienced injector selects a product based on your specific anatomy, not a general comparison.
+  </footer>
+
+</div>
+
+<script>
+const FILLERS = {
+  "juvederm": {
+    name: "Juvederm",
+    fdaQuery: "Allergan",
+    crosslink: { value: "VYCROSS technology — blends different molecular weights of HA for a smooth, cohesive gel", tier: "spec" },
+    concentration: { value: "Highest HA concentration of the major brands, around 24 mg/cc", tier: "spec" },
+    firmness: { value: "Range from soft (Volbella, for lips/fine lines) to firm (Voluma, for cheek volume) across its product line", tier: "spec" },
+    bestFor: { value: "Broadest product range of any brand — different formulations for lips, cheeks, chin, and under-eye hollows", tier: "reported" },
+    duration: { value: "6–12 months typical, up to 18-24 months for firmer formulations like Voluma", tier: "reported" },
+    manufacturer: { value: "Allergan (AbbVie)", tier: "spec" }
+  },
+  "restylane": {
+    name: "Restylane",
+    fdaQuery: "Galderma",
+    crosslink: { value: "NASHA/OBT technology — gel is pushed through screens to create uniformly sized particles", tier: "spec" },
+    concentration: { value: "Around 20 mg/cc, generally softer feel than Juvederm's top-tier products", tier: "spec" },
+    firmness: { value: "Traditionally more particulate/granular texture versus Juvederm's smoother gel, though newer Restylane lines have shifted formulation", tier: "spec" },
+    bestFor: { value: "One of the longest FDA track records of any HA filler on the market — often the default for injectors newer to a technique", tier: "reported" },
+    duration: { value: "6–12 months typical", tier: "reported" },
+    manufacturer: { value: "Galderma (formerly Medicis)", tier: "spec" }
+  },
+  "belotero": {
+    name: "Belotero",
+    fdaQuery: "Merz",
+    crosslink: { value: "Cohesive Polydensified Matrix (CPM) — cross-links HA at varying densities within the same gel, with no particle-sizing step", tier: "spec" },
+    concentration: { value: "Around 22.5 mg/cc", tier: "spec" },
+    firmness: { value: "Lower G prime (softer, more flexible) than Juvederm or Restylane — integrates seamlessly into thin skin", tier: "spec" },
+    bestFor: { value: "Fine, superficial lines where a visible or palpable filler edge would look unnatural", tier: "reported" },
+    duration: { value: "6–12 months typical", tier: "reported" },
+    manufacturer: { value: "Merz (BioForm)", tier: "spec" }
+  },
+  "rha": {
+    name: "RHA Collection",
+    fdaQuery: "Revance",
+    crosslink: { value: "Resilient Hyaluronic Acid (RHA) technology — minimal chemical modification, designed to preserve HA's natural structure", tier: "spec" },
+    concentration: { value: "Varies by product in the collection (RHA 2, 3, 4)", tier: "spec" },
+    firmness: { value: "Designed specifically to flex and stretch with facial movement, unlike more static gel formulations", tier: "spec" },
+    bestFor: { value: "Areas with a lot of dynamic movement (nasolabial folds, marionette lines) where a natural look during expression matters", tier: "reported" },
+    duration: { value: "Up to 12–15 months, among the longer-lasting options in independent comparisons", tier: "reported" },
+    manufacturer: { value: "Revance Therapeutics", tier: "spec" }
+  },
+  "versa": {
+    name: "Versa",
+    fdaQuery: "Prollenium",
+    crosslink: { value: "Proprietary manufacturing process the maker states removes more manufacturing impurities than competitors", tier: "reported" },
+    concentration: { value: "Not consistently published across independent sources", tier: "reported" },
+    firmness: { value: "Marketed for high uniformity and reduced post-injection swelling versus competitors", tier: "reported" },
+    bestFor: { value: "Practices prioritizing a lower acquisition cost per syringe without switching to a non-HA product", tier: "reported" },
+    duration: { value: "Around 12 months typical", tier: "reported" },
+    manufacturer: { value: "Prollenium Medical Technologies", tier: "spec" }
+  }
+};
+
+const ROWS = [
+  { key: "crosslink", label: "Cross-linking tech" },
+  { key: "concentration", label: "HA concentration" },
+  { key: "firmness", label: "Gel firmness" },
+  { key: "bestFor", label: "Typically used for" },
+  { key: "duration", label: "How long it lasts" },
+  { key: "manufacturer", label: "Manufacturer" }
+];
+
+function badge(tier){
+  const map = { verified: "FDA verified", spec: "Manufacturer spec", reported: "Field-reported" };
+  return `<span class="badge ${tier}">${map[tier]}</span>`;
+}
+
+function populate(){
+  const a = document.getElementById('fillerA');
+  const b = document.getElementById('fillerB');
+  Object.keys(FILLERS).forEach((key, i) => {
+    a.add(new Option(FILLERS[key].name, key, i===0, i===0));
+    b.add(new Option(FILLERS[key].name, key, i===1, i===1));
+  });
+}
+
+function renderTable(){
+  const keyA = document.getElementById('fillerA').value;
+  const keyB = document.getElementById('fillerB').value;
+  const A = FILLERS[keyA], B = FILLERS[keyB];
+  const table = document.getElementById('compareTable');
+
+  let html = `<tr><th></th><th>${A.name}</th><th>${B.name}</th></tr>`;
+
+  html += `<tr>
+    <td class="row-label">FDA status</td>
+    <td>${badge('verified')}<div class="fda-line pending" id="fda-${keyA}"><span class="fda-loading">checking openFDA…</span></div></td>
+    <td>${badge('verified')}<div class="fda-line pending" id="fda-${keyB}"><span class="fda-loading">checking openFDA…</span></div></td>
+  </tr>`;
+
+  html += `<tr>
+    <td class="row-label">EU (CE) status</td>
+    <td><a class="fda-check-btn" href="https://ec.europa.eu/tools/eudamed/#/screen/search-device" target="_blank" rel="noopener">Check EUDAMED →</a></td>
+    <td><a class="fda-check-btn" href="https://ec.europa.eu/tools/eudamed/#/screen/search-device" target="_blank" rel="noopener">Check EUDAMED →</a></td>
+  </tr>`;
+
+  ROWS.forEach(row => {
+    html += `<tr>
+      <td class="row-label">${row.label}</td>
+      <td>${badge(A[row.key].tier)}<div>${A[row.key].value}</div></td>
+      <td>${badge(B[row.key].tier)}<div>${B[row.key].value}</div></td>
+    </tr>`;
+  });
+
+  table.innerHTML = html;
+  fetchFDA(keyA);
+  fetchFDA(keyB);
+}
+
+async function tryFetch(searchField, searchValue, exact){
+  const q = exact ? `"${encodeURIComponent(searchValue)}"` : encodeURIComponent(searchValue);
+  const url = `https://api.fda.gov/device/510k.json?search=${searchField}:${q}&limit=1&sort=decision_date:desc`;
+  try{
+    const res = await fetch(url);
+    if(!res.ok) return null;
+    const data = await res.json();
+    return (data.results && data.results[0]) || null;
+  } catch(e){
+    return null;
+  }
+}
+
+async function fetchFDA(key){
+  const filler = FILLERS[key];
+  const el = document.getElementById(`fda-${key}`);
+  if(!el) return;
+
+  const attempts = [
+    { field: 'applicant', value: filler.fdaQuery, exact: true },
+    { field: 'applicant', value: filler.fdaQuery, exact: false },
+    { field: 'device_name', value: filler.name, exact: true },
+    { field: 'device_name', value: filler.name, exact: false }
+  ];
+
+  for(const attempt of attempts){
+    const rec = await tryFetch(attempt.field, attempt.value, attempt.exact);
+    if(rec){
+      el.className = "fda-line ok";
+      el.innerHTML = `<span class="status">Cleared</span> — ${rec.decision_date || 'date n/a'} · ${rec.k_number || ''}`;
+      return;
+    }
+  }
+
+  el.className = "fda-line pending";
+  el.innerHTML = `<a class="fda-check-btn" href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfPMN/pmn.cfm" target="_blank" rel="noopener">Check live →</a>`;
+}
+
+populate();
+document.getElementById('fillerB').selectedIndex = 1;
+renderTable();
+document.getElementById('fillerA').addEventListener('change', renderTable);
+document.getElementById('fillerB').addEventListener('change', renderTable);
+</script>
+</body>
+</html>
